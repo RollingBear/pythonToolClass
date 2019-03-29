@@ -106,3 +106,16 @@ class config(object):
         except AttributeError as e:
             logging.info(traceback.format_exc())
             raise OperationalError('Option %s is not found in configuration, error: %s' % (section, e))
+
+    def outer_element_count(self):
+        '''
+        dictionary outer element statistics
+        :return: the count of ini label
+        '''
+        conf = configparser.ConfigParser()
+        conf.read(self.config_file_address[1:], encoding='utf-8')
+        dic = dict(conf._sections)
+        for i in dic:
+            dic[i] = dict(dic[i])
+
+        return len(dic)

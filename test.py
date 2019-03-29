@@ -9,3 +9,4 @@ import config
 
 conf = config.config('\\config.ini')
 print(conf.get('font').title_font)
+
